@@ -1,8 +1,9 @@
-import DashboardHeader from "@/pages/shared/DashboardHeader";
+// import DashboardHeader from "@/pages/shared/DashboardHeader";
 import React, { SetStateAction, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../dashboard/Sidebar";
 import { ThemeProvider } from "../ui/ThemeProvider";
+import DashboardHeader from "../../pages/shared/DashboardHeader";
 export interface ISideBarState {
   isOpen: boolean;
   setIsOpen: React.Dispatch<SetStateAction<boolean>>;

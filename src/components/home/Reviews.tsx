@@ -1,10 +1,4 @@
 
-// import {
-//   useCreateReviewMutation,
-//   useGetReviewsQuery,
-// } from "@/redux/features/review/review.api";
-// import { useAppSelector } from "@/redux/hooks";
-// import { IReview } from "@/types/review";
 
 import { formatDistanceToNow } from "date-fns";
 import { Star } from "lucide-react";
@@ -15,13 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
-import { getRatingCounts } from "@/utils/getRatingCount";
+// import { getRatingCounts } from "@/utils/getRatingCount";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { useCreateReviewMutation, useGetReviewsQuery } from "../../redux/features/review/review.api";
 import { useAppSelector } from "../../redux/hooks";
 import { IReview } from "../../types/review";
+import { getRatingCounts } from "../../utils/getRatingCount";
 const RatingBar = ({ data }: { data: IReview[] }) => {
   const review = getRatingCounts(data);
   return (
