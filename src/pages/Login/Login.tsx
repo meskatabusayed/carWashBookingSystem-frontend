@@ -2,8 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
 
-import { useLoginUserMutation } from "@/redux/features/auth/auth.api";
-import { setToken, setUser } from "@/redux/features/auth/auth.slice";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Cookies from "js-cookie";
 import { LogIn } from "lucide-react";
@@ -12,6 +10,8 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import * as Yup from "yup";
+import { useLoginUserMutation } from "../../redux/features/auth/auth.api";
+import { setToken, setUser } from "../../redux/features/auth/auth.slice";
 const initialValues = {
   email: "",
   password: "",

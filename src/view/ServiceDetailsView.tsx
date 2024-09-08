@@ -1,20 +1,29 @@
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import SectionHeading from "@/components/ui/sectionHeading";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { setBookingInfo } from "@/redux/features/booking/booking.slice";
-import { useGetServiceByIdQuery } from "@/redux/features/service/service.api";
-import { useGetSlotsQuery } from "@/redux/features/slots/slots.api";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { formateDateString } from "@/utils/dateFormat";
+// import { Button } from "@/components/ui/button";
+// import { Calendar } from "@/components/ui/calendar";
+// import SectionHeading from "@/components/ui/sectionHeading";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "@/components/ui/tooltip";
+// import { setBookingInfo } from "@/redux/features/booking/booking.slice";
+// import { useGetServiceByIdQuery } from "@/redux/features/service/service.api";
+// import { useGetSlotsQuery } from "@/redux/features/slots/slots.api";
+// import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+// import { formateDateString } from "@/utils/dateFormat";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useGetServiceByIdQuery } from "../redux/features/service/service.api";
+import { useGetSlotsQuery } from "../redux/features/slots/slots.api";
+import { formateDateString } from "../utils/dateFormat";
+import { setBookingInfo } from "../redux/features/booking/booking.slice";
+import SectionHeading from "../components/ui/sectionHeading";
+import { Calendar } from "../components/ui/calendar";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
+import { Button } from "../components/ui/button";
 
 const ServiceDetailsView = () => {
   const { id } = useParams();

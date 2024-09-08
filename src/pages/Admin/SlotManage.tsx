@@ -1,38 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import AddSlot from "@/components/SlotManageMent/AddSlot";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  useGetAllSlotsQuery,
-  useToggleSlotStatusMutation,
-} from "@/redux/features/slots/slots.api";
 import { ListOrderedIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useGetAllSlotsQuery, useToggleSlotStatusMutation } from "../../redux/features/slots/slots.api";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../../components/ui/select";
+import AddSlot from "../../components/SlotManageMent/AddSlot";
+import { Card, CardContent } from "../../components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
+import { Button } from "../../components/ui/button";
+import { Badge } from "../../components/ui/badge";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "../../components/ui/pagination";
 const SlotManage = () => {
   const [limit, setLimit] = useState(10);
 

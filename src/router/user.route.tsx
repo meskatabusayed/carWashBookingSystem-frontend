@@ -1,6 +1,10 @@
-import MyBookings from "@/pages/User/MyBookings";
-import Profile from "@/pages/User/Profile";
-import UpdateProfileInfo from "@/pages/User/UpdateProfileInfo";
+// import MyBookings from "@/pages/User/MyBookings";
+// import Profile from "@/pages/User/Profile";
+// import UpdateProfileInfo from "@/pages/User/UpdateProfileInfo";
+
+import MyBookings from "../pages/User/MyBookings";
+import Profile from "../pages/User/Profile";
+import UpdateProfileInfo from "../pages/User/UpdateProfileInfo";
 
 export const userRoutes = [
   {

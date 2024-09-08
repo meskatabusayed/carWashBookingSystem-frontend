@@ -1,6 +1,7 @@
-import authReducer from "@/redux/features/auth/auth.slice";
-import bookingReducer from "@/redux/features/booking/booking.slice";
-import comparisonReducer from "@/redux/features/service/serviceComparison.slice";
+import authReducer from "./features/auth/auth.slice";
+import bookingReducer from "./features/auth/auth.slice";
+
+import comparisonReducer from "./features/service/serviceComparison.slice";
 import { configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,

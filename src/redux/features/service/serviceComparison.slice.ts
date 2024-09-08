@@ -1,5 +1,5 @@
-import { TFeaturedService } from "@/mock/service";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TFeaturedService } from "../../../mock/service";
 
 export interface ComparisonState {
   selectedServices: TFeaturedService[];

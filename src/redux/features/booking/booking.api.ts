@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { api } from "@/redux/api/api";
-import { IBooking, IUserBooking } from "@/types/booking";
+// import { api } from "@/redux/api/api";
+
+import { IBooking, IUserBooking } from "../../../types/booking";
+import { api } from "../../api/api";
+
+// import { IBooking, IUserBooking } from "@/types/booking";
 interface IQueryOptions {
   filter?: string;
   page?: string | number;

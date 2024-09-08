@@ -1,4 +1,6 @@
-import { IReview } from "@/types/review";
+
+
+import { IReview } from "../types/review";
 
 
 export const getRatingCounts = (reviews: IReview[]) => {

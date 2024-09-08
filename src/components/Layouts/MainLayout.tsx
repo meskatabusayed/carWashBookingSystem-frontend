@@ -1,9 +1,9 @@
-import Footer from "@/pages/shared/Footer";
-import Navbar from "@/pages/shared/Navbar";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Comparison from "../Tools/Comparison";
 import ScrollToTop from "../Tools/ScrollToTop";
+import Footer from "../../pages/shared/Footer";
+import Navbar from "../../pages/shared/Navbar";
 
 
 const MainLayout = () => {

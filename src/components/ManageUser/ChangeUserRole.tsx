@@ -1,17 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select";
-  import { useChangeRoleMutation } from "@/redux/features/auth/auth.api";
-  import { useAppSelector } from "@/redux/hooks";
-  import { TRole } from "@/types/user";
-  import { toast } from "sonner";
+import { toast } from "sonner";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import { useChangeRoleMutation } from "../../redux/features/auth/auth.api";
+import { useAppSelector } from "../../redux/hooks";
+import { TRole } from "../../types/user";
   const ChangeUserRole = ({ role, id }: { role: string; id: string }) => {
     const { user } = useAppSelector((state) => state.auth);
     const [changeRole] = useChangeRoleMutation();

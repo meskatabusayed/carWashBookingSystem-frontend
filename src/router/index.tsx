@@ -1,15 +1,22 @@
-import AdminDashboardLayout from "@/components/Layouts/AdminDashboardLayout";
-import AuthLayout from "@/components/Layouts/AuthLayout";
-import NotFound from "@/pages/shared/NotFound";
-import UserDashboardLayout from "@/components/Layouts/UserDashboardLayout";
+// import AdminDashboardLayout from "@/components/Layouts/AdminDashboardLayout";
+// import AuthLayout from "@/components/Layouts/AuthLayout";
+// import NotFound from "@/pages/shared/NotFound";
+// import UserDashboardLayout from "@/components/Layouts/UserDashboardLayout";
 import { createBrowserRouter } from "react-router-dom";
 import { adminRoutes } from "./admin.route";
 import { authRoutes } from "./auth.route";
-import MainLayout from "@/components/Layouts/MainLayout";
-import AdminProtectedRoute from "@/ProtectRoutes/AdminProtectedRoute";
-import UserProtectedRoutes from "@/ProtectRoutes/UserProtectedRoutes";
+// import MainLayout from "@/components/Layouts/MainLayout";
+// import AdminProtectedRoute from "@/ProtectRoutes/AdminProtectedRoute";
+// import UserProtectedRoutes from "@/ProtectRoutes/UserProtectedRoutes";
 import { pageRoutes } from "./pages.route";
 import { userRoutes } from "./user.route";
+import MainLayout from "../components/Layouts/MainLayout";
+import AuthLayout from "../components/Layouts/AuthLayout";
+import AdminProtectedRoute from "../ProtectRoutes/AdminProtectedRoute";
+import AdminDashboardLayout from "../components/Layouts/AdminDashboardLayout";
+import UserProtectedRoutes from "../ProtectRoutes/UserProtectedRoutes";
+import UserDashboardLayout from "../components/Layouts/UserDashboardLayout";
+import NotFound from "../utils/NotFound";
 const router = createBrowserRouter([
   {
     path: "/",

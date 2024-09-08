@@ -7,29 +7,20 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-  } from "@/components/ui/dialog";
-  import { Label } from "@/components/ui/label";
-  import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-  } from "@/components/ui/popover";
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select";
-  import { useGetServiceNamesQuery } from "@/redux/features/service/service.api";
-  import { useCreateSlotMutation } from "@/redux/features/slots/slots.api";
-  import { formateDateString } from "@/utils/dateFormat";
+  } from "../ui/dialog";
+  
   import { format } from "date-fns";
   import { CalendarDaysIcon } from "lucide-react";
   import { FormEvent, useState } from "react";
   import { toast } from "sonner";
   import { Button } from "../ui/button";
   import { Calendar } from "../ui/calendar";
+import { Label } from "../ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { useCreateSlotMutation } from "../../redux/features/slots/slots.api";
+import { useGetServiceNamesQuery } from "../../redux/features/service/service.api";
+import { formateDateString } from "../../utils/dateFormat";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
   const times = [
     "01:00",
     "02:00",

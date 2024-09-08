@@ -1,7 +1,8 @@
-import { useGetUserAllBookingsQuery } from "@/redux/features/booking/booking.api";
-import { TBookingCountDown } from "@/types/booking";
-import { getTimeRemaining } from "@/utils/getRemainingSlots";
+
 import { useEffect, useState } from "react";
+import { TBookingCountDown } from "../../types/booking";
+import { useGetUserAllBookingsQuery } from "../../redux/features/booking/booking.api";
+import { getTimeRemaining } from "../../utils/getRemainingSlots";
 
 const UpcomingSlotCountdown = () => {
   const [nextSlotCountdown, setNextSlotCountdown] =

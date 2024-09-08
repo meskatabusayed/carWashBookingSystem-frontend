@@ -1,38 +1,18 @@
-import Addservice from "@/components/serviceManageMent/Addservice";
-import DeleteService from "@/components/serviceManageMent/DeleteService";
-import EditService from "@/components/serviceManageMent/EditService";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { useGetSrvicesQuery } from "@/redux/features/service/service.api";
-import { trimText } from "@/utils/trimText";
 import { formatDistanceToNow } from "date-fns";
 import { ListOrderedIcon, SearchIcon } from "lucide-react";
 import { useState } from "react";
+import { useGetSrvicesQuery } from "../../redux/features/service/service.api";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../../components/ui/select";
+import Addservice from "../../components/serviceManageMent/Addservice";
+import { Card, CardContent } from "../../components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
+import { trimText } from "../../utils/trimText";
+import { Badge } from "../../components/ui/badge";
+import EditService from "../../components/serviceManageMent/EditService";
+import DeleteService from "../../components/serviceManageMent/DeleteService";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "../../components/ui/pagination";
 
 const ServiceManage = () => {
   const [limit, setLimit] = useState(10);

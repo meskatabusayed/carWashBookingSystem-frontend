@@ -1,4 +1,5 @@
-import ServiceDetailsView from "@/view/ServiceDetailsView";
+import ServiceDetailsView from "../../view/ServiceDetailsView";
+
 
 const ServiceDetail = () => {
   return <ServiceDetailsView />;

@@ -1,26 +1,34 @@
-import ServiceCard from "@/components/cards/ServiceCard";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useGetSrvicesQuery } from "@/redux/features/service/service.api";
-import { IService } from "@/types/service";
-import Loader from "@/utils/Loader";
+// import ServiceCard from "@/components/cards/ServiceCard";
+// import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
+// import {
+//   Pagination,
+//   PaginationContent,
+//   PaginationItem,
+//   PaginationLink,
+// } from "@/components/ui/pagination";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectGroup,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+// import { useGetSrvicesQuery } from "@/redux/features/service/service.api";
+// import { IService } from "@/types/service";
+// import Loader from "@/utils/Loader";
 import debounce from "lodash/debounce";
-import { ListOrderedIcon } from "lucide-react";
+import { ListOrderedIcon} from "lucide-react";
 import { useMemo, useState } from "react";
+import { useGetSrvicesQuery } from "../redux/features/service/service.api";
+import Loader from "../utils/Loader";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import { IService } from "../types/service";
+import ServiceCard from "../components/cards/ServiceCard";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "../components/ui/pagination";
 
 const ServiceView = () => {
   // filter state

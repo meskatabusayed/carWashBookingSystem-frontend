@@ -1,31 +1,11 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { useGetAllBookingsQuery } from "@/redux/features/booking/booking.api";
 import { ListOrderedIcon } from "lucide-react";
 import { useState } from "react";
+import { useGetAllBookingsQuery } from "../../redux/features/booking/booking.api";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../../components/ui/select";
+import { Card, CardContent } from "../../components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
+import { Badge } from "../../components/ui/badge";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "../../components/ui/pagination";
 
 export default function BookingManage() {
   const [limit, setLimit] = useState(10);

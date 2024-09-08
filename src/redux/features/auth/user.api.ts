@@ -1,5 +1,8 @@
-import { api } from "@/redux/api/api";
-import { TUser } from "@/types/user";
+
+
+import { TUser } from "../../../types/user";
+import { api } from "../../api/api";
+
 interface IQueryOptions {
   searchTerm?: string;
   page?: string | number;

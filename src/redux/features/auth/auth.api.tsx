@@ -1,5 +1,5 @@
-import { api } from "@/redux/api/api";
-import { TRole, TUser } from "@/types/user";
+import { TRole, TUser } from "../../../types/user";
+import { api } from "../../api/api";
 
 const userApi = api.injectEndpoints({
   endpoints: (builder) => ({

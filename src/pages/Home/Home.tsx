@@ -1,4 +1,5 @@
-import HomeView from "@/view/HomeView";
+import HomeView from "../../view/HomeView";
+
 
 
 const Home = () => {

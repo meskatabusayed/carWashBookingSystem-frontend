@@ -1,7 +1,12 @@
-import BookingManage from "@/pages/Admin/BookingManage";
-import ManageUser from "@/pages/Admin/ManageUser";
-import ServiceManage from "@/pages/Admin/ServiceManage";
-import SlotManage from "@/pages/Admin/SlotManage";
+// import BookingManage from "@/pages/Admin/BookingManage";
+// import ManageUser from "@/pages/Admin/ManageUser";
+// import ServiceManage from "@/pages/Admin/ServiceManage";
+// import SlotManage from "@/pages/Admin/SlotManage";
+
+import BookingManage from "../pages/Admin/BookingManage";
+import ManageUser from "../pages/Admin/ManageUser";
+import ServiceManage from "../pages/Admin/ServiceManage";
+import SlotManage from "../pages/Admin/SlotManage";
 
 export const adminRoutes = [
   {

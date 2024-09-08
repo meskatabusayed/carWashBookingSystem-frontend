@@ -1,4 +1,5 @@
-import BookingView from "@/view/BookingView";
+import BookingView from "../../view/BookingView";
+
 
 const Booking = () => {
   return <BookingView />;

@@ -1,12 +1,7 @@
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select";
-  import { Theme, useTheme } from "@/components/ui/ThemeProvider";
+
   import { Laptop, Moon, Sun } from "lucide-react";
+import { Theme, useTheme } from "../../components/ui/ThemeProvider";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
   const ThemeChanger = () => {
     const { setTheme, theme } = useTheme();
     return (

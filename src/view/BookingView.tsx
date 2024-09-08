@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useCreateBookingMutation } from "@/redux/features/booking/booking.api";
-import { useGetSlotByIdQuery } from "@/redux/features/slots/slots.api";
-import { useAppSelector } from "@/redux/hooks";
-import { IBooking } from "@/types/booking";
+// import { Button } from "@/components/ui/button";
+// import { Card, CardContent } from "@/components/ui/card";
+// import { Input } from "@/components/ui/input";
+// import { Label } from "@/components/ui/label";
+// import { useCreateBookingMutation } from "@/redux/features/booking/booking.api";
+// import { useGetSlotByIdQuery } from "@/redux/features/slots/slots.api";
+// import { useAppSelector } from "@/redux/hooks";
+// import { IBooking } from "@/types/booking";
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import { CalendarIcon } from "lucide-react";
@@ -13,6 +13,14 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import * as Yup from "yup";
+import { useAppSelector } from "../redux/hooks";
+import { useCreateBookingMutation } from "../redux/features/booking/booking.api";
+import { useGetSlotByIdQuery } from "../redux/features/slots/slots.api";
+import { IBooking } from "../types/booking";
+import { Card, CardContent } from "../components/ui/card";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
 
 const BookingView = () => {
   const { slot, service } = useAppSelector((state) => state.booking);

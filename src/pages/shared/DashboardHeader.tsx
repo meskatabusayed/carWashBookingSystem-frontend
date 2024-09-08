@@ -1,20 +1,13 @@
-import { ISideBarState } from "@/components/Layouts/AdminDashboardLayout";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useAppSelector } from "@/redux/hooks";
 import React from "react";
 import { IoMenu } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 import ThemeChanger from "./ThemeChanger";
+import { ISideBarState } from "../../components/Layouts/AdminDashboardLayout";
+import { useAppSelector } from "../../redux/hooks";
+import { Button } from "../../components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
 
 const DashboardHeader: React.FC<ISideBarState> = ({ setIsOpen }) => {
   const { user } = useAppSelector((state) => state.auth);

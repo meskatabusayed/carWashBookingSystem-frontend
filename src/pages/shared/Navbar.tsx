@@ -1,10 +1,11 @@
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { useAppSelector } from "@/redux/hooks";
+
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { Link, NavLink } from "react-router-dom";
 import UpcomingSlotCountdown from "./UpcomingSlotCountdown";
+import { useAppSelector } from "../../redux/hooks";
+import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu";
 
 
 const navLinks = [

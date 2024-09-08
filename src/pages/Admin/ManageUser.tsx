@@ -1,30 +1,17 @@
-import ChangeUserRole from "@/components/ManageUser/ChangeUserRole";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { useGetAllUserQuery } from "@/redux/features/auth/user.api";
-import { useAppSelector } from "@/redux/hooks";
-import NotFound from "@/utils/NotFound";
 import { formatDistanceToNow } from "date-fns";
 import { ListOrderedIcon, SearchIcon } from "lucide-react";
 import { useState } from "react";
+import ChangeUserRole from "../../components/ManageUser/ChangeUserRole";
+import { useGetAllUserQuery } from "../../redux/features/auth/user.api";
+import { useAppSelector } from "../../redux/hooks";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../../components/ui/select";
+import NotFound from "../../utils/NotFound";
+import { Card, CardContent } from "../../components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
+import { Separator } from "../../components/ui/separator";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "../../components/ui/pagination";
 
 const ManageUser = () => {
   const [page, setCurrentPage] = useState(1);

@@ -8,17 +8,19 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-  } from "@/components/ui/dialog";
-  import { Input } from "@/components/ui/input";
-  import { Label } from "@/components/ui/label";
-  import { useUpdateServiceMutation } from "@/redux/features/service/service.api";
-  import { IService } from "@/types/service";
+  } from "../ui/dialog";
+ 
   import { ErrorMessage, Field, Form, Formik } from "formik";
   import { PencilIcon } from "lucide-react";
   import { toast } from "sonner";
   import * as Yup from "yup";
   import { Button } from "../ui/button";
   import { Textarea } from "../ui/textarea";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { useUpdateServiceMutation } from "../../redux/features/service/service.api";
+import { IService } from "../../types/service";
+
   
   export type TValues = {
     name: string;

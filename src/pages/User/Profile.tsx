@@ -1,8 +1,9 @@
 "use client";
-import { useAppSelector } from "@/redux/hooks";
+// import { useAppSelector } from "@/redux/hooks";
 import { format } from "date-fns";
 import { FaPen } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 
 const Profile = () => {
   const { isLoading, user } = useAppSelector((state) => state.auth);

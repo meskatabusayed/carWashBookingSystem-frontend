@@ -1,4 +1,5 @@
-import ServiceView from "@/view/ServiceView";
+import ServiceView from "../../view/ServiceView";
+
 
 const Services = () => {
   return <ServiceView />;

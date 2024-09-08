@@ -1,5 +1,7 @@
-import { api } from "@/redux/api/api";
-import { IReview } from "@/types/review";
+
+
+import { IReview } from "../../../types/review";
+import { api } from "../../api/api";
 
 const reviewAPi = api.injectEndpoints({
   endpoints: (builder) => ({

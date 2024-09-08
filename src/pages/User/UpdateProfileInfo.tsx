@@ -1,16 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  useUpdateUserImageMutation,
-  useUpdateUserInfoMutation,
-} from "@/redux/features/auth/user.api";
-import { useAppSelector } from "@/redux/hooks";
-import { TUser } from "@/types/user";
-import { local_img_url } from "@/utils/localImageURL";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { UploadIcon } from "lucide-react";
 import { useState } from "react";
@@ -18,6 +8,13 @@ import { FaPen } from "react-icons/fa";
 import "react-phone-number-input/style.css";
 import { toast } from "sonner";
 import * as Yup from "yup";
+import { useAppSelector } from "../../redux/hooks";
+import { TUser } from "../../types/user";
+import { useUpdateUserImageMutation, useUpdateUserInfoMutation } from "../../redux/features/auth/user.api";
+import { local_img_url } from "../../utils/localImageURL";
+import { Label } from "../../components/ui/label";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required("* First Name is required"),

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,14 +8,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { removeServiceFromCompare } from "@/redux/features/service/serviceComparison.slice";
+} from "../ui/dialog";
+
 
 import { useEffect, useState } from "react";
 import { GoGitCompare } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { Badge } from "../ui/badge";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { Button } from "../ui/button";
+import { removeServiceFromCompare } from "../../redux/features/service/serviceComparison.slice";
+
 
 const Comparison = () => {
   const { selectedServices } = useAppSelector((state) => state.comparison);

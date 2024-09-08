@@ -1,4 +1,5 @@
-import { useGetUserAllBookingsQuery } from "@/redux/features/booking/booking.api";
+
+import { useGetUserAllBookingsQuery } from "../../redux/features/booking/booking.api";
 import UserBookingCard from "./UserBookingCard";
 
 const MyBookings = () => {

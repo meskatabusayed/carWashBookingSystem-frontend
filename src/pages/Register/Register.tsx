@@ -1,6 +1,3 @@
-import { useRegisterCustomerMutation } from "@/redux/features/auth/auth.api";
-import { setToken, setUser } from "@/redux/features/auth/auth.slice";
-import { useAppDispatch } from "@/redux/hooks";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Cookies from "js-cookie";
 import { useState } from "react";
@@ -12,6 +9,9 @@ import "react-phone-number-input/style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import * as Yup from "yup";
+import { useRegisterCustomerMutation } from "../../redux/features/auth/auth.api";
+import { useAppDispatch } from "../../redux/hooks";
+import { setToken, setUser } from "../../redux/features/auth/auth.slice";
 const initialValues = {
   firstName: "",
   lastName: "",

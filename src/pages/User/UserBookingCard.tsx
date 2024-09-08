@@ -1,10 +1,10 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { IUserBooking, TBookingCountDown } from "@/types/booking";
-import { getTimeRemaining } from "@/utils/getRemainingSlots";
 import { format } from "date-fns";
 import { ClockIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { IUserBooking, TBookingCountDown } from "../../types/booking";
+import { getTimeRemaining } from "../../utils/getRemainingSlots";
+import { Card, CardContent } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
 const UserBookingCard = ({ data }: { data: IUserBooking }) => {
   const [countdown, setCountdown] = useState<TBookingCountDown | null>(null);
 

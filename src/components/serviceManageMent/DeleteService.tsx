@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useDeletServiceMutation } from "@/redux/features/service/service.api";
-import {
-  DialogClose,
-  DialogTitle,
-  DialogTrigger,
-} from "@radix-ui/react-dialog";
 import { AlertCircleIcon, TrashIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
+  DialogTitle,
+  DialogTrigger,
 } from "../ui/dialog";
+import { useDeletServiceMutation } from "../../redux/features/service/service.api";
 
 const DeleteService = ({ id }: { id: string }) => {
   const [deletService] = useDeletServiceMutation();

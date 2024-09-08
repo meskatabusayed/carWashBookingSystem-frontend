@@ -1,5 +1,9 @@
-import { api } from "@/redux/api/api";
-import { ISlot } from "@/types/slot";
+
+
+import { ISlot } from "../../../types/slot";
+import { api } from "../../api/api";
+
+
 interface IQueryOptions {
   serviceId?: string;
   date?: string;

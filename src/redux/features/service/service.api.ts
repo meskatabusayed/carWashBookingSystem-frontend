@@ -1,5 +1,9 @@
-import { api } from "@/redux/api/api";
-import { IService } from "@/types/service";
+
+
+import { IService } from "../../../types/service";
+import { api } from "../../api/api";
+
+
 interface IQueryOptions {
   searchTerm?: string;
   min?: number;

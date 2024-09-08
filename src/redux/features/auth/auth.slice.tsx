@@ -1,5 +1,6 @@
-import { TUser } from "@/types/user";
+
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { TUser } from "../../../types/user";
 
 type TAuthState = {
   user: TUser | null;
