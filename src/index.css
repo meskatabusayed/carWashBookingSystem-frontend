@@ -90,7 +90,7 @@
 .nav_shape {
   /* clip-path: polygon(0 0, 100% 0, 100% 76%, 0 99%); */
   background: linear-gradient(#000000f1, #201010dc),
-    url("https://s25180.pcdn.co/wp-content/uploads/2022/10/Carwash-quality.jpg");
+    url("https://i.ibb.co/LNF8Gcm/navbar-bg.jpg");
 
   animation: moveBackground 1000s linear infinite;
 }
