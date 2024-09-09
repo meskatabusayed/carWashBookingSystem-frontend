@@ -1,4 +1,3 @@
-
 import Autoplay from "embla-carousel-autoplay";
 import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -16,21 +15,21 @@ const HeroSection = () => {
   const sliderData = [
     {
       id: 3,
-      image: "https://media.istockphoto.com/id/1489453824/photo/advertising-style-photo-of-a-professional-car-wash-specialist-using-a-high-pressure-washer-to.jpg?s=612x612&w=0&k=20&c=MmBrp9TZBtKnUK5ZJ3su5k8Vta9Zl0pTWAjy-9Am1Rg=",
-      heading: "Car wash services with easy online booking.",
-      desc: "At Polish Pro, we revolutionize car care with seamless online booking, top-tier services, and a commitment to making your vehicle shine like new—every time.",
+      image: "https://i.ibb.co/TrTXYMP/branding-section-1.jpg",
+      heading: "Car wash services with hassle-free online booking.",
+      desc: "With Polish Pro, experience simplified car maintenance through easy online scheduling, superior services, and a commitment to making your vehicle shine like new every time.",
     },
     {
       id: 1,
-      image: "https://media.istockphoto.com/id/1310978724/photo/the-washing-process-on-a-self-service-car-wash.jpg?s=2048x2048&w=is&k=20&c=i-HFeUACJhh7EZoGTh1_eDMaSRLK93G677v-x1iF7No=",
-      heading: "top-tier services",
-      desc: "At Polish Pro, we revolutionize car care with seamless online booking, top-tier services, and a commitment to making your vehicle shine like new—every time.",
+      image: "https://i.ibb.co/nwnRYL3/branding-section-2.jpg",
+     heading: "Premium Quality Services",
+      desc: "Polish Pro transforms car care with effortless online booking, exceptional quality, and a commitment to making your vehicle look brand new—every time.",
     },
     {
       id: 2,
-      image: "https://media.istockphoto.com/id/1405392820/photo/car-wash-detail-vehicle-during-washing-process.jpg?s=2048x2048&w=is&k=20&c=ESuya_-Mp5Bhcc_n1S3N6VGcvcJyu9vyAX_7rCpjyI4=",
-      heading: "Fully automatic machine",
-      desc: "At Polish Pro, we revolutionize car care with seamless online booking, top-tier services, and a commitment to making your vehicle shine like new—every time.",
+      image: "https://i.ibb.co/yN3dZqx/branding-section-3.jpg",
+     heading: "Fully Automated System",
+      desc: "Polish Pro transforms car care with effortless online scheduling, exceptional services, and a dedication to ensuring your vehicle looks pristine every time.",
     },
   ];
 
@@ -61,9 +60,9 @@ const HeroSection = () => {
                     />
 
                     <div className="relative z-[21] w-full h-full  flex-col center pl-[50px] bg-[#00000011] gap-[5px]">
-                      <h4 className="text-center font-[700] uppercase hero_title text-primaryMat tracking-[7px]">
+                      {/* <h4 className="text-center font-[700] uppercase hero_title text-white tracking-[7px]">
                         top class cleaning
-                      </h4>
+                      </h4> */}
                       <h1 className="text-[20px] sm:text-[30px] hero_title lg:text-[90px] font-[700] text-white capitalize">
                         <RenderNewLine text={slider.heading} />
                       </h1>
@@ -73,13 +72,13 @@ const HeroSection = () => {
                       <div className="center gap-[10px]">
                         <Link
                           to={"/services"}
-                          className="center gap-[5px] px-[20px] py-[8px] md:px-[40px] md:py-[12px] rounded-full bg-primaryMat/80 text-white mt-[20px] text-[15px] md:text-[25px]"
+                          className="center gap-[5px] px-[20px] py-[8px] md:px-[40px] md:py-[12px] rounded-full bg-[#1B03A3]/80 text-white mt-[20px] text-[15px] md:text-[25px]"
                         >
                           Book a Slot <MdArrowForwardIos />
                         </Link>
                         <Link
                           to={"/"}
-                          className="center gap-[5px] px-[20px] py-[8px] md:px-[40px] md:py-[12px] rounded-full bg-white text-primaryMat mt-[20px] text-[15px] md:text-[25px]"
+                          className="center gap-[5px] px-[20px] py-[8px] md:px-[40px] md:py-[12px] rounded-full bg-white text-[#1B03A3] mt-[20px] text-[15px] md:text-[25px]"
                         >
                           Explore <MdArrowForwardIos />
                         </Link>
