@@ -1,4 +1,3 @@
-
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
@@ -6,7 +5,6 @@ import { Link, NavLink } from "react-router-dom";
 import UpcomingSlotCountdown from "./UpcomingSlotCountdown";
 import { useAppSelector } from "../../redux/hooks";
 import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu";
-
 
 const navLinks = [
   {
@@ -61,12 +59,16 @@ const Navbar = () => {
   }, [showSidebar, setShowSidebar]);
 
   return (
-    <header className=" bg-[#1B03A3]/70 w-full">
-      <div className="nav_shape sticky top-0 z-20 border-b-[#1B03A3] border-b-[1px]">
+    <header className="w-full">
+      <div className=" sticky top-0 z-20 border-b-[#1B03A3] border-b-[1px]">
         <div className="mx-auto layout_container">
           <div className="flex  items-center justify-between py-2">
             <Link to="/" className="flex items-center">
-              <img src="https://i.ibb.co/Trhntbq/car-logo.jpg" alt="logo" className="w-[100px]" />
+              <img
+                src="https://i.ibb.co/Trhntbq/car-logo.jpg"
+                alt="logo"
+                className="w-[100px]"
+              />
             </Link>
             <div className="center w-fit gap-[15px] pt-[0] pb-[10px]">
               <div className="hidden lg:flex">
@@ -76,12 +78,13 @@ const Navbar = () => {
                     to={href}
                     className={
                       navigationMenuTriggerStyle() +
-                      " !bg-transparent !text-white font-[700] py-[0]"
+                      " !bg-transparent font-[800] py-[0]"
                     }
                   >
                     {lebel}
                   </Link>
                 ))}
+                 
               </div>
 
               {user ? (
@@ -94,8 +97,9 @@ const Navbar = () => {
               ) : (
                 <Link
                   to={"/login"}
-                  className="px-[18px] py-[5px] bg-[#1B03A3] text-white rounded-full center gap-[10px]"
+                  className="relative px-[18px] py-[5px] bg-[#1B03A3] text-white rounded-full flex items-center gap-[10px] overflow-hidden"
                 >
+                  <span className="absolute inset-0 bg-black opacity-50 z-0"></span>
                   Login <CiUser />
                 </Link>
               )}
@@ -118,7 +122,7 @@ const Navbar = () => {
               style={{ transition: "0.3s" }}
             >
               <Link to="/" className="flex items-center">
-                <img src="/images/logo.png" className="w-[120px]" />
+                <img src="https://i.ibb.co/Trhntbq/car-logo.jpg" className="w-[120px]" />
               </Link>
               <div className="w-full flex flex-col mt-[20px]">
                 {navLinks.map(({ href, lebel }) => (
@@ -126,9 +130,7 @@ const Navbar = () => {
                     to={href}
                     className={({ isActive }) =>
                       `${
-                        isActive
-                          ? "bg-[#1B03A3] text-white"
-                          : "text-primaryTxt"
+                        isActive ? "bg-[#1B03A3] text-white" : "text-primaryTxt"
                       }  w-full px-[15px] py-[8px] rounded-[5px]`
                     }
                   >

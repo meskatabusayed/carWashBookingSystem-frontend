@@ -16,8 +16,8 @@ const MainLayout = () => {
     <>
       <Navbar />
       <Outlet></Outlet>
-      <Footer></Footer>
-      <div className="fixed bottom-[20px] right-[20px] center gap-[20px]">
+      <Footer></Footer> 
+       <div className="fixed bottom-[20px] right-[20px] center gap-[20px]">
         <Comparison />
         <ScrollToTop />
       </div>
