@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <header className="w-full">
-      <div className=" sticky top-0 z-20 border-b-[#1B03A3] border-b-[1px]">
+      <div className=" sticky top-0 z-20 border-b-primaryMat border-b-[1px]">
         <div className="mx-auto layout_container">
           <div className="flex  items-center justify-between py-2">
             <Link to="/" className="flex items-center">
@@ -90,14 +90,14 @@ const Navbar = () => {
               {user ? (
                 <Link
                   to={`/dashboard/${user.role == "admin" ? "admin" : "user"}`}
-                  className="text-[15px] text-white bg-[#1B03A3] px-[10px] py-[5px] center rounded-full gap-[3px]"
+                  className="text-[15px] text-white bg- px-[10px] py-[5px] center rounded-full gap-[3px]"
                 >
                   <CiUser /> Dashboard
                 </Link>
               ) : (
                 <Link
                   to={"/login"}
-                  className="relative px-[18px] py-[5px] bg-[#1B03A3] text-white rounded-full flex items-center gap-[10px] overflow-hidden"
+                  className="relative px-[18px] py-[5px] bg-primaryMat text-white rounded-full flex items-center gap-[10px] overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-black opacity-50 z-0"></span>
                   Login <CiUser />
@@ -130,7 +130,7 @@ const Navbar = () => {
                     to={href}
                     className={({ isActive }) =>
                       `${
-                        isActive ? "bg-[#1B03A3] text-white" : "text-primaryTxt"
+                        isActive ? "bg-primaryMat text-white" : "text-primaryTxt"
                       }  w-full px-[15px] py-[8px] rounded-[5px]`
                     }
                   >

@@ -14,38 +14,37 @@ import {
       >
         <div className="container max-w-5xl mx-auto flex flex-col items-center gap-8 text-center">
           <div className="flex items-center gap-2">
-            <img className="w-[130px]" src={"/images/logo.png"} />
+            <img className="w-[130px]" src={"https://i.ibb.co/Trhntbq/car-logo.jpg"} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm">
             <div>
               <h4 className="mb-2 text-primaryMat text-[17px] font-[600]">
-                Location
+                
+                Office Address
               </h4>
-              <p className="text-white">100, Dhaka Bangladesh 1217</p>
+              <p className="text-white">Level-4, 34, Awal Centre, Banani, Dhaka</p>
             </div>
             <div>
               <h4 className="mb-2 text-[17px] font-[600] text-primaryMat">
                 Contact
               </h4>
               <p className="text-white">
-                Phone: (123) 456-7890
+                Phone: (+880) 1756457677
                 <br />
-                Email: info@acme.com
+                Email: info@phclining.com
               </p>
             </div>
             <div>
               <h4 className="font-medium mb-2 text-primaryMat">Follow Us</h4>
               <div className="flex justify-center gap-4">
-                <Link to="#" aria-label="Twitter">
-                  <TwitchIcon className="h-5 w-5 text-white hover:text-muted-foreground transition" />
-                </Link>
-                <Link to="#" aria-label="Facebook">
+                
+                <Link to="https://www.facebook.com/programmingherowebcourse" aria-label="Facebook">
                   <FacebookIcon className="h-5 w-5 text-white hover:text-muted-foreground transition" />
                 </Link>
-                <Link to="#" aria-label="Instagram">
+                <Link to="https://www.instagram.com/programminghero/" aria-label="Instagram">
                   <InstagramIcon className="h-5 w-5 text-white hover:text-muted-foreground transition" />
                 </Link>
-                <Link to="#" aria-label="LinkedIn">
+                <Link to="https://www.linkedin.com/company/programminghero/posts/?feedView=all" aria-label="LinkedIn">
                   <LinkedinIcon className="h-5 w-5 text-white hover:text-muted-foreground transition" />
                 </Link>
               </div>
@@ -78,12 +77,10 @@ import {
             <Link to="#" className="hover:underline">
               Cookie Policy
             </Link>
-            <Link to="#" className="hover:underline">
-              Sitemap
-            </Link>
+            
           </div>
           <p className="text-xs text-white">
-            &copy; 2024 Polish Pro Ltd. All rights reserved.
+            &copy; 2024 PH cleaning Ltd. All rights reserved.
           </p>
         </div>
       </footer>

@@ -35,7 +35,7 @@ const FeaturedServices = () => {
   }, [api]);
 
   return (
-    <div className="w-full carbon_fiber py-[70px] px-[20px]">
+    <div className="w-full  py-[70px] px-[20px]">
       <SectionHeading
         description="Top 6 populer offer to chose from use. Best featured services"
         heading="Our top featured services"
@@ -86,30 +86,30 @@ const FeaturedServices = () => {
                   <p className="text-gray-600 mb-6">{data.description}</p>
                   <ul className="space-y-2 mb-6">
                     <li className="flex items-center">
-                      <CheckIcon className="h-5 w-5 text-green-500" />
+                      <CheckIcon className="h-5 w-5 text-black" />
                       <span className="ml-2 text-gray-700">Seats washing</span>
                     </li>
                     <li className="flex items-center">
-                      <CheckIcon className="h-5 w-5 text-green-500" />
+                      <CheckIcon className="h-5 w-5 text-black" />
                       <span className="ml-2 text-gray-700">
                         Vacuum cleaning
                       </span>
                     </li>
                     <li className="flex items-center">
-                      <CheckIcon className="h-5 w-5 text-green-500" />
+                      <CheckIcon className="h-5 w-5 text-black" />
                       <span className="ml-2 text-gray-700">
                         Interior wet cleaning
                       </span>
                     </li>
                     <li className="flex items-center">
-                      <CheckIcon className="h-5 w-5 text-green-500" />
+                      <CheckIcon className="h-5 w-5 text-black" />
                       <span className="ml-2 text-gray-700">Window wiping</span>
                     </li>
                   </ul>
                   <Button
                     className={`${
                       selectedServices.includes(data)
-                        ? "bg-green-500"
+                        ? "bg-black"
                         : "bg-red-500"
                     } text-white px-6 py-3 rounded-full`}
                     onClick={() => dispatch(addServiceToCompare(data))}

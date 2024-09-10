@@ -21,7 +21,7 @@ module.exports = {
       colors: {
         // ---->
         primaryTxt: "#00000",
-        primaryMat: "#008a60",
+        primaryMat: "#1877F2",
         borderColor: "#e4e4ec",
         borderDark: "#9c9cad",
         // ---->
