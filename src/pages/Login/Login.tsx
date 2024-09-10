@@ -100,7 +100,7 @@ const Login = () => {
             />
           </div>
           <div className="bg-white max-w-[450px]">
-            <h2 className="font-bold mb-6 text-center text-[35px]">Login</h2>
+            <h2 className="mb-6 text-center text-[35px] text-[#1877F2] font-extrabold">Login</h2>
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}

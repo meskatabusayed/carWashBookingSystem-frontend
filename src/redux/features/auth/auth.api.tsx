@@ -3,7 +3,7 @@ import { api } from "../../api/api";
 
 const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    // Create blog post
+    // Create user
     registerCustomer: builder.mutation({
       query: (post) => ({
         url: "/auth/register/customer",

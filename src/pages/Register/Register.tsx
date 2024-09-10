@@ -93,12 +93,12 @@ const Register = () => {
             <Form>
               <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
-                  Your Name
+                   Firstname
                 </label>
                 <Field
                   type="text"
                   name="firstName"
-                  placeholder={"Your Name"}
+                  placeholder={"First name"}
                   className="mt-1 block w-full px-3 py-2 border border-borderColor rounded-md outline-none"
                 />
                 <ErrorMessage
@@ -107,7 +107,7 @@ const Register = () => {
                   className="text-red-500 text-sm"
                 />
               </div>
-              {/* <div className="mb-4">
+              <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
                    Last name
                 </label>
@@ -122,7 +122,7 @@ const Register = () => {
                   component="div"
                   className="text-red-500 text-sm"
                 />
-              </div> */}
+              </div>
               <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
                   Email
@@ -186,7 +186,7 @@ const Register = () => {
                   className="text-red-500 text-sm"
                 />
               </div>
-              {/* <div className="mb-4">
+              <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
                   Confirm Password
                 </label>
@@ -200,7 +200,7 @@ const Register = () => {
                   component="div"
                   className="text-red-500 text-sm"
                 />
-              </div> */}
+              </div>
 
               <button
                 type="submit"
@@ -222,7 +222,7 @@ const Register = () => {
         </div>
 
         <p className="mt-4 text-gray-600 text-sm text-start">
-          <span className="font-bold">Note:</span> Your personal data is always protected.
+          <span className="font-extrabold">Note:</span> Your personal data is always protected.
         </p>
       </div>
     </div>
