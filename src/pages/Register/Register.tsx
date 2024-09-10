@@ -1,3 +1,4 @@
+/* Registration page start */
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Cookies from "js-cookie";
 import { useState } from "react";
@@ -81,7 +82,7 @@ const Register = () => {
     <div className="min-h-screen flex flex-col items-center justify-center px-[15px] py-[20px]">
       <div className="bg-white p-[25px]  max-w-xl shadow-md rounded-[12px]">
         <h2 className=" font-bold mb-6 text-center text-[35px]">
-          Create an Account
+          Create an <span className="text-[#1877F2] font-extrabold">Account</span>
         </h2>
         <Formik
           initialValues={initialValues}
@@ -92,12 +93,12 @@ const Register = () => {
             <Form>
               <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
-                  Your firstname
+                  Your Name
                 </label>
                 <Field
                   type="text"
                   name="firstName"
-                  placeholder={"your first name"}
+                  placeholder={"Your Name"}
                   className="mt-1 block w-full px-3 py-2 border border-borderColor rounded-md outline-none"
                 />
                 <ErrorMessage
@@ -106,14 +107,14 @@ const Register = () => {
                   className="text-red-500 text-sm"
                 />
               </div>
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
-                  Your last name
+                   Last name
                 </label>
                 <Field
                   type="text"
                   name="lastName"
-                  placeholder={"Your last name"}
+                  placeholder={"Last name"}
                   className="mt-1 block w-full px-3 py-2 border border-borderColor rounded-md outline-none"
                 />
                 <ErrorMessage
@@ -121,7 +122,7 @@ const Register = () => {
                   component="div"
                   className="text-red-500 text-sm"
                 />
-              </div>
+              </div> */}
               <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
                   Email
@@ -129,7 +130,7 @@ const Register = () => {
                 <Field
                   type="email"
                   name="email"
-                  placeholder="example@some.com"
+                  placeholder="example@gmail.com"
                   className="mt-1 block w-full px-3 py-2 border border-borderColor rounded-md outline-none"
                 />
                 <ErrorMessage
@@ -140,7 +141,7 @@ const Register = () => {
               </div>
               <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
-                  Your Address
+                   Address
                 </label>
                 <Field
                   type="address"
@@ -158,7 +159,7 @@ const Register = () => {
 
               <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
-                  Your phone Number
+                   Phone Number
                 </label>
                 <PhoneInput
                   defaultCountry="BD"
@@ -185,7 +186,7 @@ const Register = () => {
                   className="text-red-500 text-sm"
                 />
               </div>
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label className="block text-primaryTxt text-[18px] font-[600]">
                   Confirm Password
                 </label>
@@ -199,7 +200,7 @@ const Register = () => {
                   component="div"
                   className="text-red-500 text-sm"
                 />
-              </div>
+              </div> */}
 
               <button
                 type="submit"
@@ -221,9 +222,7 @@ const Register = () => {
         </div>
 
         <p className="mt-4 text-gray-600 text-sm text-start">
-          Note: Your personal data will be used to support your experience
-          throughout this website, to manage access to your account, and for
-          other purposes described in our privacy policy.
+          <span className="font-bold">Note:</span> Your personal data is always protected.
         </p>
       </div>
     </div>
@@ -231,3 +230,4 @@ const Register = () => {
 };
 
 export default Register;
+/* Registration page end */

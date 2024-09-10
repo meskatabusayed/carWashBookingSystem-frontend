@@ -1,3 +1,4 @@
+/* this is login page start */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
@@ -92,7 +93,7 @@ const Login = () => {
           <div className="w-[500px] h-[450px] hidden lg:flex">
             <img
               src={
-                "https://media.istockphoto.com/id/1405392820/photo/car-wash-detail-vehicle-during-washing-process.jpg?s=2048x2048&w=is&k=20&c=ESuya_-Mp5Bhcc_n1S3N6VGcvcJyu9vyAX_7rCpjyI4="
+                "https://i.ibb.co/B2jL5bx/login.jpg"
               }
               alt="auth"
               className="w-full h-full object-cover"
@@ -170,10 +171,8 @@ const Login = () => {
             </div>
 
             <p className="mt-4 text-gray-600 text-sm text-start">
-              Note: Your personal data will be used to support your experience
-              throughout this website, to manage access to your account, and for
-              other purposes described in our privacy policy.
-            </p>
+          <span className="font-bold">Note:</span> Your personal data is always protected.
+        </p>
           </div>
         </div>
       </div>
@@ -182,3 +181,4 @@ const Login = () => {
 };
 
 export default Login;
+/* this is login page start */

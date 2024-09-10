@@ -2,7 +2,7 @@ import {
     FacebookIcon,
     InstagramIcon,
     LinkedinIcon,
-    TwitchIcon,
+    
   } from "lucide-react";
   import { Link } from "react-router-dom";
   
