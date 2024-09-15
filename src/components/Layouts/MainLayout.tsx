@@ -1,27 +1,15 @@
-import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import Comparison from "../Tools/Comparison";
-import ScrollToTop from "../Tools/ScrollToTop";
-import Footer from "../../pages/shared/Footer";
-import Navbar from "../../pages/shared/Navbar";
-
+import Navber from "../../pages/home/shared/navber/Navber";
+import Footer from "../../pages/home/shared/footer/Footer";
 
 const MainLayout = () => {
-  useEffect(() => {
-    window.onbeforeunload = function () {
-      return;
-    };
-  });
-  return (
-    <>
-      <Navbar />
-      <Outlet></Outlet>
-      <Footer></Footer> 
-       <div className="fixed bottom-[20px] right-[20px] center gap-[20px]">
-        <Comparison />
-        <ScrollToTop />
-      </div>
-    </>
-  );
+    return (
+        <div>
+            <Navber/>
+            <Outlet/>
+            <Footer/>
+        </div>
+    );
 };
+
 export default MainLayout;

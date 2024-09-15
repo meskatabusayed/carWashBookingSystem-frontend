@@ -1,16 +1,12 @@
-export type TRole = "admin" | "user";
 export type TUser = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  image?: string;
-  _id: string;
-  address: string;
-  phone: string;
-  createdAt: string;
-  role?: TRole;
-  auth?: {
-    role: TRole;
+    _id: string;
+    name: string;
     email: string;
+    password: string;
+    phone: string;
+    role: "user" | "admin";
+    address: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
   };
-};

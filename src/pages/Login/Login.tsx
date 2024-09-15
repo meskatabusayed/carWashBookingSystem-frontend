@@ -1,184 +1,123 @@
-/* this is login page start */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-"use client";
-
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import Cookies from "js-cookie";
-import { LogIn } from "lucide-react";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import * as Yup from "yup";
-import { useLoginUserMutation } from "../../redux/features/auth/auth.api";
-import { setToken, setUser } from "../../redux/features/auth/auth.slice";
-const initialValues = {
-  email: "",
-  password: "",
-};
-type TFormValues = typeof initialValues;
-const validationSchema = Yup.object({
-  email: Yup.string()
-    .email("* Invalid email address")
-    .required("* Email is required"),
-  password: Yup.string().required("* Password is required"),
-});
+import { useLoginMutation } from "../../redux/features/auth/AuthApi";
+import Swal from "sweetalert2";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser } from "../../redux/features/auth/AuthSlice";
 
 const Login = () => {
-  const [login] = useLoginUserMutation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const [login, { isLoading, }] = useLoginMutation();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const redirect = Cookies.get("redirect");
-
-  const handleLogin = async (values: TFormValues) => {
-    const toastId = toast.loading("Please wait...");
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
-      const { data, error: err } = await login(values);
-      const error: any = err;
-      if (error) {
-        if (error.status === 401) {
-          return toast.error("password didn;t matched", {
-            description: "try to remember your password and try again",
-          });
-        }
-        if (error.status === 404) {
-          return toast.error("Invalid email address", {
-            description: "Enter a valid email adress.",
-          });
-        }
-
-        return toast.error(error.data?.message || "Unknown error occureds");
-      }
-
-      if (!data) {
-        return toast.error("Something went wrong");
-      }
-      if (!data.success) {
-        return toast.error(data.message);
-      }
-
-      const authData = {
-        user: data.data,
-      };
-      dispatch(setUser(authData));
-      Cookies.set("refreshToken", data.refreshToken, { expires: 30 });
-      dispatch(setToken(data.accessToken || ""));
-
-      toast.success("Successfully logged in", {
-        description: "Welcome back!",
+      const result = await login({ email, password }).unwrap();
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful!",
+        text: "You have logged in successfully.",
       });
 
-      redirect ? Cookies.remove("redirect") : "";
-      navigate(redirect || "/");
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
-    } finally {
-      toast.dismiss(toastId);
+      // Dispatch user data to Redux store
+      dispatch(setUser({ user: result.data, token: result.token }));
+      navigate("/");
+    } catch (err) {
+      const customError = err as { data?: { message?: string } };
+      setError("Login failed. Please check your credentials and try again.");
+      // Show error alert
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: customError.data?.message || error,
+      });
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-[15px]">
-      <div className="flex items-start justify-center flex-col gap-[50px] shadow-lg rounded-[12px] overflow-hidden p-[20px]">
-        <Link
-          to={"/"}
-          className="text-primaryTxt font-[600] text-[18px] center gap-[5px]"
-        >
-          <FaArrowLeftLong /> Back To Home
-        </Link>
-        <div className="flex items-center justify-center gap-[50px]">
-          <div className="w-[500px] h-[450px] hidden lg:flex">
-            <img
-              src={
-                "https://i.ibb.co/B2jL5bx/login.jpg"
-              }
-              alt="auth"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="bg-white max-w-[450px]">
-            <h2 className="mb-6 text-center text-[35px] text-[#1877F2] font-extrabold">Login</h2>
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleLogin}
-            >
-              {({ isSubmitting }) => (
-                <Form>
-                  <div className="mb-4">
-                    <label className="block text-primaryTxt text-[18px] font-[600]">
-                      Email
-                    </label>
-                    <Field
-                      type="email"
-                      name="email"
-                      className="mt-1 block w-full px-3 py-2 border border-borderColor rounded-md outline-none"
-                    />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="text-red-500 text-sm"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-primaryTxt text-[18px] font-[600]">
-                      Password
-                    </label>
-                    <Field
-                      type="password"
-                      name="password"
-                      className="mt-1 block w-full px-3 py-2 border border-borderColor rounded-md outline-none"
-                    />
-                    <ErrorMessage
-                      name="password"
-                      component="div"
-                      className="text-red-500 text-sm"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-fit px-[15px] center gap-[8px] bg-primaryMat text-white py-[12px] hover:bg-green-600 rounded-[5px]"
-                  >
-                    Login <LogIn />
-                  </button>
-                </Form>
-              )}
-            </Formik>
-            <div className="mt-6 text-start">
-              <p className="text-gray-700">
-                Don&apos;t have an account?{" "}
-                <Link
-                  to="/register"
-                  className="text-primaryMat hover:underline"
-                >
-                  Create Account
-                </Link>
-              </p>
-              <p className="text-gray-700">
-                Dont remeber our password?
-                <Link
-                  to="/forgot-password"
-                  className="text-primaryMat hover:underline"
-                >
-                  forgot password
-                </Link>
-              </p>
+    <div className="relative flex items-center justify-center min-h-screen lg:mt-[62px]">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "url('')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.6,
+          zIndex: -1,
+        }}
+      />
+      {/* Login Form */}
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign in</h2>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        <form onSubmit={handleLogin}>
+          <div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#1877F2]"
+              />
             </div>
-
-            <p className="mt-4 text-gray-600 text-sm text-start">
-          <span className="font-bold">Note:</span> Your personal data is always protected.
-        </p>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#1877F2]"
+              />
+            </div>
+            <button
+              type="submit"
+              className={`w-full py-2 px-4 rounded transition duration-300 ${
+                isLoading ? "bg-gray-400" : "bg-[#1877F2] hover:bg-[#1877F2]"
+              } text-white`}
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Login"}
+            </button>
           </div>
-        </div>
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600">
+              New user?
+              <Link
+                to="/register"
+                className="text-[#1877F2] ml-2 hover:text-[#1877F2]"
+              >
+                Sign Up here
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );
 };
 
 export default Login;
-/* this is login page start */

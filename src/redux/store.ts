@@ -1,44 +1,41 @@
-import authReducer from "./features/auth/auth.slice";
-import bookingReducer from "./features/auth/auth.slice";
-
-import comparisonReducer from "./features/service/serviceComparison.slice";
 import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./features/auth/AuthSlice";
 import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
   persistReducer,
   persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
   PURGE,
   REGISTER,
-  REHYDRATE,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { api } from "./api/api";
+import { baseApi } from "./api/BaseApi";
+
 const persistConfig = {
-  key: "root",
+  key: "auth",
   storage,
 };
-const persistAuthReducer = persistReducer(
-  { ...persistConfig, key: "auth" },
-  authReducer
-);
-const store = configureStore({
-  reducer: {
-    [api.reducerPath]: api.reducer,
-    comparison: comparisonReducer,
-    auth: persistAuthReducer,
-    booking: bookingReducer,
-  },
 
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+const persistAuthReducer = persistReducer(persistConfig, authReducer);
+
+export const store = configureStore({
+  reducer: {
+    [baseApi.reducerPath]: baseApi.reducer,
+    auth: persistAuthReducer,
+  },
+  middleware: (getDefaultMiddlewares) =>
+    getDefaultMiddlewares({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(api.middleware),
+    }).concat(baseApi.middleware),
 });
-const persistor = persistStore(store);
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
-export { persistor, store };
+
+export const persistor = persistStore(store);
