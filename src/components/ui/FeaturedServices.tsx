@@ -153,11 +153,11 @@
 /* our feature */
 
 import Autoplay from "embla-carousel-autoplay";
-import { /*ArrowRightIcon,*/ CheckIcon, ClockIcon } from "lucide-react";
-//import { useEffect, useState } from "react";
+import { ArrowRightIcon, CheckIcon, ClockIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
   Carousel,
-  //CarouselApi,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -165,29 +165,29 @@ import {
 } from "./carousel";
 import SectionHeading from "./sectionHeading";
 
-// import { addServiceToCompare } from "../../redux/features/service/serviceComparison.slice";
-// import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-// import { Button } from "./button";
+import { addServiceToCompare } from "../../redux/features/service/serviceComparison.slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { Button } from "./button";
 import { TFeaturedService, serviceData } from "../../mock/service";
 
 const FeaturedServices = () => {
-  // const [api, setApi] = useState<CarouselApi>();
-  // const [current, setCurrent] = useState(0);
-  // const [count, setCount] = useState(0);
-  // const dispatch = useAppDispatch();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const dispatch = useAppDispatch();
 
-  // const { selectedServices } = useAppSelector((state) => state?.comparison);
+  const { selectedServices } = useAppSelector((state) => state?.comparison);
 
-  // useEffect(() => {
-  //   if (!api) return;
+  useEffect(() => {
+    if (!api) return;
 
-  //   setCount(api.scrollSnapList().length);
-  //   setCurrent(api.selectedScrollSnap() + 1);
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
 
-  //   api.on("select", () => {
-  //     setCurrent(api.selectedScrollSnap() + 1);
-  //   });
-  // }, [api]);
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
   return (
     <div className="w-full  py-[70px] px-[20px]">
@@ -197,7 +197,7 @@ const FeaturedServices = () => {
         slogan="Our services"
       />
       <Carousel
-        //setApi={setApi}
+        setApi={setApi}
         plugins={[
           Autoplay({
             delay: 4000,
@@ -223,7 +223,7 @@ const FeaturedServices = () => {
                       &#9654;
                     </CarouselNext>
                     <span className="text-white font-[800]">
-                    {/* {current} of {count} */}
+                     {current} of {count} 
                     </span>
 
                     <CarouselPrevious className="text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
@@ -262,7 +262,7 @@ const FeaturedServices = () => {
                       <span className="ml-2 text-gray-700">Window wiping</span>
                     </li>
                   </ul>
-                  {/* <Button
+                   <Button
                     className={`${
                       selectedServices.includes(data)
                         ? "bg-black"
@@ -274,7 +274,7 @@ const FeaturedServices = () => {
                       ? "Remove from Compare"
                       : "Add to Compare"}
                     <ArrowRightIcon className="ml-2 h-5 w-5" />
-                  </Button> */}
+                  </Button> 
                 </div>
               </div>
             </CarouselItem>

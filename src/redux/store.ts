@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/AuthSlice";
+import comparisonReducer from "./features/service/serviceComparison.slice";
 import {
   persistReducer,
   persistStore,
@@ -23,6 +24,7 @@ const persistAuthReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
+    comparison: comparisonReducer,
     auth: persistAuthReducer,
   },
   middleware: (getDefaultMiddlewares) =>
