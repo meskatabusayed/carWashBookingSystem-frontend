@@ -23,6 +23,7 @@ const SlotCountdown = () => {
   const [nextBooking, setNextBooking] = useState<Booking | null>(null);
   const [countdowns, setCountdowns] = useState<Record<string, TimeRemaining>>({});
   const [bookings, setBookings] = useState<Booking[]>([]);
+  console.log(bookings);
 
   const { data, isLoading } = useGetSlotAvailabilityQuery(undefined);
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {
   Dialog,
@@ -50,7 +51,7 @@ const Comparison = () => {
           </Badge>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]  w-full overflow-auto">
+      <DialogContent className="sm:max-w-[425px]  w-full overflow-auto bg-white">
         <DialogHeader>
           <DialogTitle>Compare your selected services</DialogTitle>
           <DialogDescription>
@@ -66,7 +67,7 @@ const Comparison = () => {
           )}
 
           <div className="grid gap-4 p-4 rounded-lg">
-            {selectedServices.map((service) => (
+            {selectedServices.map((service : any) => (
               <div className="grid gap-4 p-4 bg-muted rounded-lg">
                 <div className="flex items-center gap-4">
                   <div className="flex-1">

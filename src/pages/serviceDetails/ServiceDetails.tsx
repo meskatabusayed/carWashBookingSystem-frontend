@@ -26,6 +26,13 @@ const ServiceDetails = () => {
   const [selectedService, setSelectedService] = useState<TService>(undefined);
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState("");
+  
+  useEffect(() => {
+    // Get today's date and format it as YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0];
+    setSelectedDate(today);
+  }, []);
+  
   const [selectedSlotId, setSelectedSlotId] = useState<string | null>(null);
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
   const [vehicleType, setVehicleType] = useState<VehicleType>(VehicleType.Car);
