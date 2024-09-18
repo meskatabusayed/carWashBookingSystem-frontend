@@ -1,123 +1,175 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
-import moment from "moment";
-import { useGetSlotAvailabilityQuery } from "../../../redux/features/admin/SlotApi";
+import { Card, List } from "antd";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import { useGetMyPendingBookingsQuery } from "../../../redux/features/admin/Bookings";
 
+dayjs.extend(duration);
 
+// Define the type for booking data
 type Booking = {
-  id: string;
+  key: string;
   serviceName: string;
   date: string;
   startTime: string;
   endTime: string;
+  price: string;
 };
 
-type TimeRemaining = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+const calculateTimeRemaining = (date: string, time: string): string => {
+  const now = dayjs();
+  const targetTime = dayjs(`${date} ${time}`);
+  const diff = targetTime.diff(now);
+
+  if (diff <= 0) {
+    return "Time's up";
+  }
+
+  const durationObj = dayjs.duration(diff);
+  return `${durationObj.days()}d ${durationObj.hours()}h ${durationObj.minutes()}m ${durationObj.seconds()}s`;
 };
 
 const SlotCountdown = () => {
-  const [nextBooking, setNextBooking] = useState<Booking | null>(null);
-  const [countdowns, setCountdowns] = useState<Record<string, TimeRemaining>>({});
   const [bookings, setBookings] = useState<Booking[]>([]);
-  console.log(bookings);
+  const [timeRemaining, setTimeRemaining] = useState<Record<string, string>>({});
+  const [nextBooking, setNextBooking] = useState<Booking | null>(null);
+  const [navbarCountdown, setNavbarCountdown] = useState<string>("");
 
-  const { data, isLoading } = useGetSlotAvailabilityQuery(undefined);
-
-  const calculateTimeRemaining = (date: string, startTime: string): TimeRemaining => {
-    const bookingTime = moment(`${date} ${startTime}`, "YYYY-MM-DD HH:mm");
-    const now = moment();
-    const duration = moment.duration(bookingTime.diff(now));
-
-    return {
-      days: duration.days(),
-      hours: duration.hours(),
-      minutes: duration.minutes(),
-      seconds: duration.seconds(),
-    };
-  };
-
+  const { data, isLoading , refetch} = useGetMyPendingBookingsQuery(undefined);
 
   useEffect(() => {
-    if (data && data?.data && data?.data?.length > 0) {
-      const NewBookingdata: Booking[] = data?.data?.map((item: any) => ({
-        id: item?._id,
-        serviceName: item?.service?.name || "No Service", 
-        date: item?.date,
-        startTime: item?.startTime,
-        endTime: item?.endTime,
+    if (data && data?.data) {
+      const transformedData = data?.data?.map((booking: any) => ({
+        key: booking?._id,
+        serviceName: booking?.service?.name || "No Service",
+        date: booking?.slot?.date,
+        startTime: booking?.slot?.startTime,
+        endTime: booking?.slot?.endTime,
+        price: `$${booking?.service?.price}`,
       }));
 
-      setBookings(NewBookingdata);
-    }
-  }, [data]);
+      setBookings(transformedData);
 
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const newCountdowns: Record<string, TimeRemaining> = {};
+      // Find the next booking
       let nearestBooking: Booking | null = null;
-
-      bookings.forEach((booking) => {
-        const timeRemaining = calculateTimeRemaining(booking?.date, booking?.startTime);
-        newCountdowns[booking?.id] = timeRemaining;
-
+      transformedData.forEach((booking) => {
         if (
-          (!nearestBooking || moment(`${booking?.date} ${booking?.startTime}`).isBefore(`${nearestBooking?.date} ${nearestBooking?.startTime}`)) &&
-          moment(`${booking?.date} ${booking?.startTime}`).isAfter(moment())
+          (!nearestBooking ||
+            dayjs(`${booking.date} ${booking.startTime}`).isBefore(
+              dayjs(`${nearestBooking.date} ${nearestBooking.startTime}`)
+            )) &&
+          dayjs(`${booking.date} ${booking.startTime}`).isAfter(dayjs())
         ) {
           nearestBooking = booking;
         }
       });
 
-      setCountdowns(newCountdowns);
       setNextBooking(nearestBooking);
+
+      // Initialize time remaining calculation for each booking
+      const updatedTimes: Record<string, string> = {};
+      transformedData.forEach((booking) => {
+        updatedTimes[booking.key] = calculateTimeRemaining(
+          booking.date,
+          booking.startTime
+        );
+      });
+
+      setTimeRemaining(updatedTimes);
+    }
+  }, [data]);
+  
+  useEffect(() => {
+   
+    const intervalId = setInterval(() => {
+      refetch();
     }, 1000);
 
-    return () => clearInterval(intervalId);
-  }, [bookings]);
+    return () => clearInterval(intervalId); 
+  }, [refetch]);
 
-  if(!data){
-    <p>Loading Slot Data.......{isLoading}</p>
-  }
+  
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const updatedTimes: Record<string, string> = {};
+
+      bookings.forEach((booking) => {
+        updatedTimes[booking.key] = calculateTimeRemaining(
+          booking.date,
+          booking.startTime
+        );
+      });
+
+      setTimeRemaining(updatedTimes);
+
+      if (nextBooking) {
+        const timeRemaining = calculateTimeRemaining(
+          nextBooking.date,
+          nextBooking.startTime
+        );
+        setNavbarCountdown(timeRemaining);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId); // Clean up interval on unmount
+  }, [bookings, nextBooking]);
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Slot Countdown</h1>
+      {/* Navbar Countdown */}
+      <div className="navbar-countdown" style={{ marginBottom: "16px" }}>
+        {nextBooking && (
+          <div>
+            <strong>Next Booking:</strong> {nextBooking.serviceName} |{" "}
+            <strong>Countdown:</strong> {navbarCountdown}
+          </div>
+        )}
+      </div>
+
+      <h1 className="text-2xl font-bold mb-4">Upcoming Bookings</h1>
 
       {nextBooking && (
         <div className="mb-6 p-4 border rounded shadow-lg">
-          <h2 className="text-xl font-semibold mb-2">Next Booking: {nextBooking?.serviceName}</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            Next Booking: {nextBooking.serviceName}
+          </h2>
           <p className="text-gray-600">
-            {nextBooking.date} | {nextBooking?.startTime} - {nextBooking?.endTime}
+            {nextBooking.date} | {nextBooking.startTime} - {nextBooking.endTime}
           </p>
           <p className="text-red-500 font-semibold">
-            Countdown: {countdowns[nextBooking?.id]?.days}d {countdowns[nextBooking.id]?.hours}h{" "}
-            {countdowns[nextBooking.id]?.minutes}m {countdowns[nextBooking?.id]?.seconds}s
+            Countdown: {timeRemaining[nextBooking.key] || "Time's up"}
           </p>
         </div>
       )}
 
-      <h2 className="text-xl font-bold mb-4">All Upcoming Bookings</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {bookings.map((booking) => (
-          <div key={booking?.id} className="p-4 border rounded shadow-md">
-            <h3 className="text-lg font-semibold">{booking?.serviceName}</h3>
-            <p className="text-gray-600">
-              {booking?.date} | {booking?.startTime} - {booking?.endTime}
-            </p>
-            <p className="text-red-500 font-semibold">
-              Countdown: {countdowns[booking?.id]?.days}d {countdowns[booking?.id]?.hours}h{" "}
-              {countdowns[booking?.id]?.minutes}m {countdowns[booking?.id]?.seconds}s
-            </p>
-          </div>
-        ))}
-      </div>
+      <List
+        grid={{ gutter: 16, column: 2 }}
+        dataSource={bookings}
+        loading={isLoading}
+        renderItem={(item) => (
+          <List.Item>
+            <Card title={item.serviceName} className="rounded-lg shadow-md">
+              <p>
+                <strong>Date:</strong> {item.date}
+              </p>
+              <p>
+                <strong>Time:</strong> {item.startTime} - {item.endTime}
+              </p>
+              <p>
+                <strong>Price:</strong> {item.price}
+              </p>
+              <p>
+                <strong>Time Remaining:</strong>{" "}
+                {timeRemaining[item.key] || "Time's up"}
+              </p>
+            </Card>
+          </List.Item>
+        )}
+      />
     </div>
   );
 };
 
 export default SlotCountdown;
+

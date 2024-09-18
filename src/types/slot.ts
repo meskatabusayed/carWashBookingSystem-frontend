@@ -1,4 +1,6 @@
 export type TSlot  = {
+    id: Key | null | undefined;
+    serviceName: ReactNode;
     _id: string;
     service: any;
     date: string;
