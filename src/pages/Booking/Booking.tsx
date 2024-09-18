@@ -9,13 +9,23 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useInitalePaymentMutation } from "../../redux/features/payment/PaymentAPi";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 
 const Booking = () => {
   const [selectedService, setSelectedService] = useState<TBooking | null>(null);
   const [selectedDate, setSelectedDate] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  
   const [data, setData] = useState<TBooking[]>([]);
+  const user = useAppSelector((state: RootState) => state?.auth?.user);
+
+  useEffect(() => {
+    const today = new Date();
+    const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split('T')[0]; 
+
+    setSelectedDate(localDate); 
+  }, []);
 
   // Fetch pending bookings data from the backend
   const { data: MyBookingData, isLoading } =
@@ -23,16 +33,16 @@ const Booking = () => {
 
   //user data
   const isAuthenticated = useSelector((state: RootState) => state.auth.user);
-
+ 
 
   //initale Payment
   const [initalePayment] = useInitalePaymentMutation();
 
-    // Navigate function
-    const navigate = useNavigate();
+  // Navigate function
+  const navigate = useNavigate();
 
-   // Redirect to login if user is not authenticated
-   useEffect(() => {
+  // Redirect to login if user is not authenticated
+  useEffect(() => {
     if (!isAuthenticated) {
       navigate("/login"); // Redirect to login page
     }
@@ -62,7 +72,7 @@ const Booking = () => {
 
   const handlePayment = async () => {
     // Validate required fields
-    if (!userName || !userEmail || !selectedDate || !selectedService) {
+    if (!user?.name || !user?.email || !selectedDate || !selectedService) {
       Swal.fire({
         title: "Incomplete Information",
         text: "Please fill in all the fields before proceeding to payment.",
@@ -71,14 +81,17 @@ const Booking = () => {
       });
       return; // Stop execution if any required field is missing
     }
-
+    const { name, email } = user;
     // Prepare order data
+    const timeRange = `${selectedService?.slot?.startTime}-${selectedService?.slot?.endTime}`;
     const totalePrice = selectedService.service?.price;
     const BookingId = selectedService._id;
+    
     const OrderData = {
       BookingId,
-      userName,
-      userEmail,
+      name,
+      email,
+      timeRange,
       selectedDate,
       totalePrice,
       phone: isAuthenticated?.phone,
@@ -151,7 +164,9 @@ const Booking = () => {
                   onClick={() => setSelectedService(item)}
                   // Apply conditional styling for the selected item
                   className={`cursor-pointer ${
-                    selectedService?._id === item?._id ? "bg-blue-100 p-2 rounded-md" : ""
+                    selectedService?._id === item?._id
+                      ? "bg-blue-100 p-2 rounded-md"
+                      : ""
                   }`}
                 >
                   <div className="flex flex-col font-serif p-2">
@@ -183,9 +198,9 @@ const Booking = () => {
               <label className="block text-gray-700 mb-2">Name:</label>
               <input
                 type="text"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                value={user?.name}
                 className="border p-2 rounded w-full"
+                readOnly
                 required
               />
             </div>
@@ -193,9 +208,19 @@ const Booking = () => {
               <label className="block text-gray-700 mb-2">Email:</label>
               <input
                 type="email"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
+                value={user?.email}
                 className="border p-2 rounded w-full"
+                readOnly
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Selected time:</label>
+              <input
+                type="text"
+                value={`${selectedService?.slot?.startTime}-${selectedService?.slot?.endTime}`}
+                className="border p-2 rounded w-full"
+                readOnly
                 required
               />
             </div>

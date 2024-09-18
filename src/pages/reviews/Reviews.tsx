@@ -57,7 +57,7 @@ type TReview = {
             reviews.map((review) => (
               <div
                 key={review._id}
-                className="p-6 mb-6 bg-gradient-to-r from-green-50 to-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
+                className="p-6 mb-6 bg-gradient-to-r from-[#1877F2] to-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
               >
                 <div className="flex items-center mb-2">
                   <StarRating rating={review.rating} setRating={() => {}} />

@@ -31,7 +31,7 @@ const HeroCarousel = () => {
                 "url('https://i.ibb.co/TrTXYMP/branding-section-1.jpg')",
             }}
           >
-            <div className="absolute inset-0 bg-black opacity-50"></div> 
+            <div className="absolute inset-0 bg-[#1E1E1E] opacity-50"></div> 
             <div className="relative text-center z-10 px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-24">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-4 sm:mb-6">
               Premium Quality Services

@@ -213,9 +213,9 @@ const ServiceDetails = () => {
                   className={`p-2 rounded border text-center ${
                     bookedSlots.includes(slot.id)
                       ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                      : "bg-green-500 text-white hover:bg-green-600"
+                      : "bg-[#1877F2] text-white hover:bg-[#1877F2]"
                   } ${
-                    selectedSlotId === slot.id && "border-green-700 border-2"
+                    selectedSlotId === slot.id && "border-[#1877F2] border-2"
                   }`}
                 >
                   {slot.startTime}

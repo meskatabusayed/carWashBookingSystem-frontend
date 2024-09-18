@@ -17,7 +17,6 @@ import PastBooking from "../pages/user/pastBooking/PastBooking";
 import UpcomingBooking from "../pages/user/upcomingBooking/UpcomingBooking";
 import AccountInfo from "../pages/user/accountInfo/AccountInfo";
 import SlotCountdown from "../pages/user/slotCountdown/SlotCountdown";
-import Location from "../pages/location/Location";
 import Reviews from "../pages/reviews/Reviews";
 
 const router = createBrowserRouter([
@@ -48,10 +47,6 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
-      },
-      {
-        path:"/location",
-        element:<Location></Location>
       },
       {
         path: "*",

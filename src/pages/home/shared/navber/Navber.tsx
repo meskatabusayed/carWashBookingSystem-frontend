@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
-import { TbPhoneCall } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../redux/store";
 import { logout } from "../../../../redux/features/auth/AuthSlice";
+import "./logo.css";
 
 const Navber = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,6 @@ const Navber = () => {
   const navLinks = [
     { name: "HOME", path: "/" },
     { name: "SERVICES", path: "/services" },
-    { name: "LOCATION", path: "/location" },
     { name: "BOOKING", path: "/booking" },
     //  dainamicely update dashbrd
     ...(isLoggedIn
@@ -56,15 +55,11 @@ const Navber = () => {
   ];
 
   return (
-    <nav className="bg-black w-full py-4 px-6 flex items-center justify-between top-0 left-0 z-40 fixed font-serif">
+    <nav className="bg-[#1E1E1E] w-full py-4 px-6 flex items-center justify-between top-0 left-0 z-40 fixed font-serif">
       {/* Logo Section */}
       <Link to="/">
-        <div className="flex items-center space-x-4">
-          <img
-            src="https://i.ibb.co/Trhntbq/car-logo.jpg"
-            alt="Logo"
-            className="lg:h-10 h-5"
-          />
+        <div className="logo-container">
+          <span className="logo-text">PH Clining</span>
         </div>
       </Link>
 
@@ -81,13 +76,6 @@ const Navber = () => {
 
       {/* Contact Section */}
       <div className="flex items-center space-x-4 lg:mr-0 mr-5">
-        <Link
-          to={"/"}
-          className="flex items-center space-x-2 hover:border hover:border-[#1877F2] p-1 rounded-lg"
-        >
-          <TbPhoneCall className="text-[#1877F2] text-lg" />
-          <span className="text-white">Call</span>
-        </Link>
         {isLoggedIn ? (
           <button
             onClick={handleLogout}
@@ -148,8 +136,6 @@ const Navber = () => {
               </li>
             ) : (
               <li className="w-full">
-                
-
                 <Link
                   to={"/login"}
                   className="relative px-[18px] py-[5px] bg-primaryMat text-white rounded-full flex items-center gap-[10px] overflow-hidden"

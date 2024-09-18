@@ -18,7 +18,7 @@ const ServiceCard = ({ title, price, duration, linkText, link }: ServiceCardProp
       <p className="text-sm mb-4">{duration}</p>
       <Link
         to={link}
-        className="text-sm underline hover:text-green-500 transition"
+        className="text-sm underline hover:text-[#1877F2] transition"
       >
         {linkText}
       </Link>
