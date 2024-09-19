@@ -17,7 +17,7 @@ const UserDashboard = () => {
             left: 0,
             top: 0,
             zIndex: 1,
-            backgroundColor: "rgb(0, 0, 0)",
+            backgroundColor: "#1E1E1E",
           }}
           breakpoint="lg"
           collapsedWidth="0"
@@ -39,7 +39,7 @@ const UserDashboard = () => {
           <Menu
             theme="dark"
             mode="inline"
-            style={{ backgroundColor: "rgb(0, 0, 0)" }}
+            style={{ backgroundColor: "#1E1E1E" }}
           >
             <Menu.Item key="1" icon={<FaHistory />}>
               <Link to="/user/past-bookings">Past Bookings</Link>

@@ -21,7 +21,7 @@ import { Badge } from "../ui/badge";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const Comparison = () => {
-  const { selectedServices } = useAppSelector((state) => state.comparison);
+  const { selectedServices } : any = useAppSelector((state) => state.comparison);
   const [shake, setShake] = useState(false);
   const dispatch = useAppDispatch();
 

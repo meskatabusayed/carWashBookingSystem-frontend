@@ -150,7 +150,7 @@ const Booking = () => {
             loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
             endMessage={
               <Divider className="font-serif" plain>
-                It is all, nothing more 🤐
+                Nothing more 🤐
               </Divider>
             }
             scrollableTarget="scrollableDiv"

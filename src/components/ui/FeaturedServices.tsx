@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* our feature */
 
 import Autoplay from "embla-carousel-autoplay";
@@ -24,7 +25,7 @@ const FeaturedServices = () => {
   const [count, setCount] = useState(0);
   const dispatch = useAppDispatch();
 
-  const { selectedServices } = useAppSelector((state) => state?.comparison);
+  const { selectedServices } : any = useAppSelector((state) => state?.comparison);
 
   useEffect(() => {
     if (!api) return;

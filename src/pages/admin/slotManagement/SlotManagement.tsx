@@ -35,7 +35,7 @@ interface Slot {
   date: string;
   startTime: string;
   endTime: string;
-  isBooked: string; // Updated to handle three status types: "booked", "available", "canceled"
+  isBooked: string; 
 }
 
 const SlotManagement = () => {
@@ -166,13 +166,13 @@ const SlotManagement = () => {
       key: "isBooked",
       render: (isBooked: string, record: Slot) => (
         <Select
-          value={isBooked} // Handle 3 values: "booked", "available", or "canceled"
-          onChange={(value) => toggleStatus(record.key)} // Trigger the toggle function
+          value={isBooked} 
+          onChange={() => toggleStatus(record.key)} 
           style={{ width: 120 }}
-          disabled={isBooked === "booked"} // If status is "booked", disable further changes
+          disabled={isBooked === "booked"} 
         >
           <Option value="available">AVAILABLE</Option>
-          <Option value="booked" disabled>BOOKED</Option> {/* Booked option is disabled */}
+          <Option value="booked" disabled>BOOKED</Option> 
           <Option value="canceled">CANCELED</Option>
         </Select>
       ),

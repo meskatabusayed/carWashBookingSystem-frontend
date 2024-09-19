@@ -87,7 +87,7 @@ const ReviewSection = () => {
       <section className="relative bg-white bg-opacity-100 rounded-xl p-6 max-w-3xl mx-auto shadow-md z-10">
         {/* Black Overlay with Login Button */}
         {!isAuthenticated && (
-          <div className="absolute inset-0 bg-[] bg-opacity-70 flex justify-center items-center z-20 mt-5 rounded-md">
+          <div className="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center z-20 mt-5 rounded-md">
             <button
               className="bg-[#1877F2] text-white py-2 px-4 rounded-lg"
               onClick={() => navigate("/login")}

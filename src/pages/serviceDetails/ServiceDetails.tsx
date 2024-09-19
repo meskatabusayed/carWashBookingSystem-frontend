@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
@@ -156,7 +157,7 @@ const ServiceDetails = () => {
 
   return (
     <div className="relative mt-[62px] p-4 min-h-screen">
-      <div className="absolute inset-0 bg-[url('https://i.ibb.co/XYjFF9n/foamy-car-wash-soap-sparkling-clean-vehicle-concept-car-care-cleaning-products-vehicle-maintenance-c.jpg')] bg-cover bg-center opacity-70"></div>
+      <div className="absolute inset-0 bg-cover bg-center opacity-70"></div>
       <div className="relative max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold mb-4 text-center md:text-left">
           {selectedService?.name}

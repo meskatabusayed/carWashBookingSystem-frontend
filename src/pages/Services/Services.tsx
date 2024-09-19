@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetServicesQuery } from "../../redux/features/admin/AdminApi";
@@ -7,7 +8,6 @@ const Services = () => {
   const [filterCriteria, setFilterCriteria] = useState("all");
   const [sortOrder, setSortOrder] = useState("asc");
   const { data } = useGetServicesQuery(undefined);
-
 
   // State for storing services fetched from the API
   const [servicesList, setServicesList] = useState<any[]>([]);
@@ -46,16 +46,17 @@ const Services = () => {
       }
     })
     .sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a?.name.localeCompare(b?.name);
+      if (sortOrder === "lowToHigh") {
+        return a?.price - b?.price; 
+      } else if (sortOrder === "highToLow") {
+        return b?.price - a?.price;
       } else {
-        return b?.name.localeCompare(a?.name);
+        return 0; 
       }
     });
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center p-4 mt-[52px] lg:mt-[62px]">
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center p-4 mt-[52px] lg:mt-[62px]">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full">
         <h2 className="text-3xl font-serif mb-6 text-center">Our Services</h2>
 
@@ -88,15 +89,18 @@ const Services = () => {
             onChange={(e) => setSortOrder(e.target.value)}
             className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#1877F2]"
           >
-            <option value="asc">Sort: A-Z</option>
-            <option value="desc">Sort: Z-A</option>
+            <option value="lowToHigh">Sort: Low-High</option>
+            <option value="highToLow">Sort: High-low</option>
           </select>
         </div>
 
         {/* Services List */}
         <div className="space-y-6">
           {filteredServices?.map((service) => (
-            <div key={service?.id} className="border-b pb-4 mb-4 lg:flex lg:items-center lg:justify-between">
+            <div
+              key={service?.id}
+              className="border-b pb-4 mb-4 lg:flex lg:items-center lg:justify-between"
+            >
               <div>
                 <h3 className="text-xl font-serif">{service?.name}</h3>
                 <p className="text-gray-700">{service?.description}</p>
