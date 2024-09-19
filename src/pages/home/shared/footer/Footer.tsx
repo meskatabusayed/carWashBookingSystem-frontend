@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm">
           <div>
-            <h4 className="mb-2 text-primaryMat text-[17px] font-[600]">
+            <h4 className="mb-2 text-white text-bold text-[17px] font-[600]">
               Office Address
             </h4>
             <p className="text-white">
@@ -22,7 +22,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h4 className="mb-2 text-[17px] font-[600] text-primaryMat">
+            <h4 className="mb-2 text-[17px] text-white text-bold font-[600]">
               Contact
             </h4>
             <p className="text-white">
@@ -32,7 +32,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h4 className="font-medium mb-2 text-primaryMat">Follow Us</h4>
+            <h4 className="font-medium mb-2 text-white text-bold">Follow Us</h4>
             <div className="flex justify-center gap-4">
               <Link
                 to="https://www.facebook.com/programmingherowebcourse"

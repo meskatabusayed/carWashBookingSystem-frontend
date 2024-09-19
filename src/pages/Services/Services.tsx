@@ -55,12 +55,7 @@ const Services = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center p-4 mt-[52px] lg:mt-[62px]"
-      style={{
-        backgroundImage:
-          "url('https://i.ibb.co/LpVzFMX/man-washing-car-with-hood-up-763111-289116.jpg')",
-      }}
-    >
+      className="min-h-screen flex items-center justify-center bg-cover bg-center p-4 mt-[52px] lg:mt-[62px]">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full">
         <h2 className="text-3xl font-serif mb-6 text-center">Our Services</h2>
 
@@ -71,14 +66,14 @@ const Services = () => {
             placeholder="Search services..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 mb-4 lg:mb-0"
+            className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#1877F2] mb-4 lg:mb-0"
           />
 
           {/* Filter dropdown */}
           <select
             value={filterCriteria}
             onChange={(e) => setFilterCriteria(e.target.value)}
-            className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 mb-4 lg:mb-0"
+            className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#1877F2] mb-4 lg:mb-0"
           >
             <option value="all">All Services</option>
             <option value="lowPrice">Price: Low</option>
@@ -91,7 +86,7 @@ const Services = () => {
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
-            className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full lg:w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#1877F2]"
           >
             <option value="asc">Sort: A-Z</option>
             <option value="desc">Sort: Z-A</option>
@@ -110,7 +105,7 @@ const Services = () => {
                   <strong>Duration:</strong> {service?.duration} mins
                 </p>
               </div>
-              <button className="mt-2 lg:mt-0 border-2 border-green-500 p-2 rounded-lg hover:bg-green-500 hover:text-white transition duration-300">
+              <button className="mt-2 lg:mt-0 border-2 border-[#1877F2] p-2 rounded-lg hover:bg-[#1877F2] hover:text-white transition duration-300">
                 <Link to={`/services/${service?.id}`}>View Details</Link>
               </button>
             </div>
