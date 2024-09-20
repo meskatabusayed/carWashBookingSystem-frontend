@@ -1,8 +1,10 @@
 # PH Clinig
 
-## Live link - 
+## Live link - https://car-wash-booking-system-frontend-ten.vercel.app/
 
-## 🔗 Server side repository - 
+## Vedio overview - https://drive.google.com/file/d/1jUC-PytCWUCRmfI4u1kGJDGyd8b3sx-v/view?usp=drive_link
+
+## 🔗 Server side repository - https://github.com/meskatabusayed/Assignment-3-l2-ph
 
 ## Introduction
 
@@ -58,9 +60,6 @@ npm install
 
 Create a .env file in the root directory of the project and add your MongoDB credentials:
 
-```
-VITE_BASE_API=
-```
 
 ### Running the Project
 
